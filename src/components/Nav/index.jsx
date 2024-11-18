@@ -1,6 +1,6 @@
 import { auth } from "../../firebase.js"
 import { useAuthState } from "react-firebase-hooks/auth";
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 export default function Nav() {
 
@@ -8,23 +8,23 @@ export default function Nav() {
 
     function signIn() {
         const provider = new GoogleAuthProvider();
-        signInWithRedirect(auth, provider);
+        signInWithPopup(auth, provider);
     }
 
-    function signOut() {
-        auth.signOut();
-    }
+        function signOut() {
+            auth.signOut();
+        }
 
-    return (
-        <>
-            <nav>
-                <h1>Web Chat</h1>
-                {user ? (
-                    <button onClick={signOut} className="border p-1">Sign Out</button>
-                ) : (
+        return (
+            <>
+                <nav>
+                    <h1>Web Chat</h1>
+                    {user ? (
+                        <button onClick={signOut} className="border p-1">Sign Out</button>
+                    ) : (
                         <button onClick={signIn} className="border p-1">Sign In with Google</button>
-                )}
-            </nav>
-        </>
-    )
-}
+                    )}
+                </nav>
+            </>
+        )
+    }
