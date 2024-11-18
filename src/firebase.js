@@ -4,10 +4,9 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import 'secrets.dart';
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: googleApiKey,
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "chat-app-2869a.firebaseapp.com",
   projectId: "chat-app-2869a",
   storageBucket: "chat-app-2869a.firebasestorage.app",

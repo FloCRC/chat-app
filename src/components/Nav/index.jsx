@@ -1,15 +1,18 @@
-import { useState } from "react"
+import { auth } from "../../firebase.js"
+import { useAuthState } from "react-firebase-hooks/auth";
+import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
 
 export default function Nav() {
 
-    const [user, setUser] = useState(false)
+    const [user] = useAuthState(auth)
 
     function signIn() {
-        setUser(true)
+        const provider = new GoogleAuthProvider();
+        signInWithRedirect(auth, provider);
     }
 
     function signOut() {
-        setUser(false)
+        auth.signOut();
     }
 
     return (
@@ -17,9 +20,9 @@ export default function Nav() {
             <nav>
                 <h1>Web Chat</h1>
                 {user ? (
-                    <button onClick={signOut}>Sign Out</button>
+                    <button onClick={signOut} className="border p-1">Sign Out</button>
                 ) : (
-                        <button onClick={signIn}>Sign In with Google</button>
+                        <button onClick={signIn} className="border p-1">Sign In with Google</button>
                 )}
             </nav>
         </>
