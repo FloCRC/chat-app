@@ -11,7 +11,9 @@ export default function App() {
   return (
     <>
       <Nav />
-      {user ? (<ChatBox />) : (<Welcome />)}
+      <div className="flex justify-center h-screen w-full bg-orange-100">
+        {user ? (<ChatBox />) : (<Welcome />)}
+      </div>
     </>
   )
 }

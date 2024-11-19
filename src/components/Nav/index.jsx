@@ -17,12 +17,12 @@ export default function Nav() {
 
         return (
             <>
-                <nav>
-                    <h1>Web Chat</h1>
+                <nav className="border-b border-black flex justify-between items-center px-10 py-2 bg-green-300">
+                    <h1 className="text-xl font-bold">WEB CHAT</h1>
                     {user ? (
-                        <button onClick={signOut} className="border p-1">Sign Out</button>
+                        <button onClick={signOut} className="border border-black px-2 py-1 bg-green-100 hover:bg-orange-300 hover:shadow-inner">Sign Out</button>
                     ) : (
-                        <button onClick={signIn} className="border p-1">Sign In with Google</button>
+                        <button onClick={signIn} className="border border-black px-2 py-1 bg-green-100 hover:bg-orange-100 hover:shadow-inner">Sign In with Google</button>
                     )}
                 </nav>
             </>
