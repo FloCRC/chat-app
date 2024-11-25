@@ -1,6 +1,7 @@
 import { auth } from "../../firebase.js"
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import GoogleSignin from "../../assets/googleButton.png";
 
 export default function Nav() {
 
@@ -22,7 +23,7 @@ export default function Nav() {
                     {user ? (
                         <button onClick={signOut} className="border border-black px-2 py-1 bg-green-100 hover:bg-orange-300 hover:shadow-inner">Sign Out</button>
                     ) : (
-                        <button onClick={signIn} className="border border-black px-2 py-1 bg-green-100 hover:bg-orange-100 hover:shadow-inner">Sign In with Google</button>
+                        <button onClick={signIn} className=""><img src={GoogleSignin} /></button>
                     )}
                 </nav>
             </>

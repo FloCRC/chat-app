@@ -2,12 +2,11 @@ import Message from "../Message";
 import SendMessage from "../SendMessage";
 import { query, collection, orderBy, onSnapshot, limit, QuerySnapshot } from "firebase/firestore";
 import { db } from "../../firebase";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ChatBox() {
 
     const [messages, setMessages] = useState([])
-    const scroll = useRef()
 
     useEffect(() => {
         const q = query(
@@ -32,13 +31,12 @@ export default function ChatBox() {
     return (
         <>
             <div className="flex flex-col items-start justify-center w-[600px] h-full b-20">
-                <div>
+                <div className="overflow-scroll">
                     {messages.map(message => (
                         <Message key={message.id} message={message} />
                     ))}
                 </div>
-                <span ref={scroll}></span>
-                <SendMessage scroll={scroll} />
+                <SendMessage />
             </div>
         </>
     )

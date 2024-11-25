@@ -9,11 +9,11 @@ export default function App() {
   const [user] = useAuthState(auth)
 
   return (
-    <>
+    <div className="h-screen bg-orange-100">
       <Nav />
-      <div className="flex justify-center h-screen w-full bg-orange-100">
+      <div className="flex justify-center h-4/5 w-full mt-10">
         {user ? (<ChatBox />) : (<Welcome />)}
       </div>
-    </>
+    </div>
   )
 }
